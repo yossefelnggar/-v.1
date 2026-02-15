@@ -3,131 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>انضم قبل الإطلاق</title>
+<title>انضم للنخبة | قريباً</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+  :root {
+    --primary: #3b82f6;
+    --accent: #10b981;
+    --dark-bg: #030712;
+    --card-bg: #111827;
+  }
 
-body{
-  font-family:'Cairo',sans-serif;
-  background:linear-gradient(135deg,#0f172a,#1e293b);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  color:#fff;
-  text-align:center;
-  padding:20px;
-}
+  * { margin:0; padding:0; box-sizing:border-box; }
 
-.container{
-  background:#111827;
-  padding:40px;
-  border-radius:16px;
-  width:100%;
-  max-width:450px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.4);
-}
+  body {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--dark-bg);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-h1{
-  font-size:26px;
-  margin-bottom:15px;
-  font-weight:700;
-}
+  .container {
+    background: var(--card-bg);
+    padding: 40px 25px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+  }
 
-p{
-  font-size:15px;
-  margin-bottom:25px;
-  color:#cbd5e1;
-  line-height:1.7;
-}
+  .badge {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
 
-input{
-  width:100%;
-  padding:14px;
-  border-radius:10px;
-  border:1px solid #334155;
-  background:#0f172a;
-  color:#fff;
-  font-size:15px;
-  margin-bottom:15px;
-  outline:none;
-  transition:.2s;
-}
+  h1 { font-size: 28px; font-weight: 900; line-height: 1.3; margin-bottom: 15px; }
+  p { color: #94a3b8; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
 
-input:focus{
-  border-color:#3b82f6;
-  box-shadow:0 0 0 3px rgba(59,130,246,0.2);
-}
+  .limit-box {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px dashed rgba(255,255,255,0.1);
+  }
 
-button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:10px;
-  background:#3b82f6;
-  color:#fff;
-  font-size:16px;
-  font-weight:600;
-  cursor:pointer;
-  transition:.2s;
-}
+  .count-num { color: #ef4444; font-weight: 900; font-size: 20px; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-button:hover{
-  background:#2563eb;
-}
+  input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: 2px solid #1f2937;
+    background: #030712;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 15px;
+    outline: none;
+    transition: 0.3s;
+    text-align: center;
+  }
 
-.success{
-  display:none;
-  margin-top:15px;
-  color:#22c55e;
-  font-weight:600;
-}
+  input:focus { border-color: var(--primary); box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+
+  button {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, var(--primary), #2563eb);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4); }
+
+  /* Success Area CSS */
+  #successMsg { display: none; animation: slideUp 0.5s ease-out; }
+  @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  .rank-box {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    padding: 20px;
+    border-radius: 16px;
+    margin: 20px 0;
+    border: 1px solid var(--accent);
+  }
+
+  .share-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+
+  .s-btn {
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+  }
+
+  .wa { background: #25d366; }
+  .tw { background: #000; }
+  .cp { background: #4b5563; grid-column: span 2; cursor:pointer; border:none; }
+  .s-btn:hover { opacity: 0.9; transform: scale(1.02); }
+
 </style>
 </head>
-
 <body>
 
 <div class="container">
-  <h1>🚀 قريبًا الإطلاق الرسمي</h1>
-  <p>
-    كن من أوائل المستخدمين الذين يحصلون على دعوة خاصة عند إطلاق المنصة.
-  </p>
+  <div id="formSection">
+    <div class="badge">💎 دعوة خاصة للمبدعين فقط</div>
+    <h1>استعد لإحداث ضجة! 🚀</h1>
+    <p>نحن نختار 100 شخص فقط لتجربة النسخة التجريبية والحصول على اشتراك ذهبي مجاني.</p>
 
-  <form action="https://script.google.com/macros/s/AKfycbwO6od1cacpy35hOeOJgEtFH-8bkTo3WBE9FxWtnt7WxOQcGl0rRlWpyjXqCmilqD8-/exec"
-        method="POST"
-        target="hidden_iframe"
-        onsubmit="submitted=true">
+    <div class="limit-box">
+      <span>الأماكن المتبقية:</span>
+      <span class="count-num" id="liveCount">14</span>
+    </div>
 
-    <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
-    <button type="submit">سجل اهتمامك</button>
-  </form>
+    <form id="leadForm" action="https://script.google.com/macros/s/AKfycbwO6od1cacpy35hOeOJgEtFH-8bkTo3WBE9FxWtnt7WxOQcGl0rRlWpyjXqCmilqD8-/exec" method="POST" target="hidden_iframe">
+      <input type="email" name="email" placeholder="بريدك الإلكتروني الاحترافي.." required>
+      <button type="submit" id="mainBtn">احجز مكاني الآن</button>
+    </form>
+  </div>
 
-  <div class="success" id="successMsg">
-    ✅ تم تسجيلك بنجاح.
+  <div id="successMsg">
+    <div style="font-size: 50px;">🎉</div>
+    <h2 style="color: var(--accent);">تم تأمين مكانك!</h2>
+    <p>لقد نجحت في حجز مكانك ضمن القائمة الأولية.</p>
+    
+    <div class="rank-box">
+        <div style="font-size: 13px; color: #94a3b8;">ترتيبك في القائمة:</div>
+        <div style="font-size: 32px; font-weight: 900; color: #fff;">#<span id="randomRank">38</span></div>
+    </div>
+
+    <p style="font-size: 13px;">شارك اللينك مع صحابك عشان تطلع في الترتيب وتدخل الخدمة أسرع!</p>
+    
+    <div class="share-grid">
+      <a id="waLink" href="#" target="_blank" class="s-btn wa">واتساب</a>
+      <a id="twLink" href="#" target="_blank" class="s-btn tw">تويتر (X)</a>
+      <button onclick="copyToClipboard()" class="s-btn cp">نسخ رابط الدعوة</button>
+    </div>
   </div>
 </div>
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
 <script>
-let submitted=false;
-
-document.querySelector("form").addEventListener("submit",function(){
-  setTimeout(()=>{
-    if(submitted){
-      document.getElementById("successMsg").style.display="block";
+  // تريك العداد التنازلي الوهمي
+  let timeLeft = 14;
+  setInterval(() => {
+    if(timeLeft > 3) {
+      timeLeft -= Math.floor(Math.random() * 2);
+      document.getElementById('liveCount').innerText = timeLeft;
     }
-  },600);
-});
+  }, 10000);
+
+  // تريك ترتيب الانتظار العشوائي
+  document.getElementById('randomRank').innerText = Math.floor(Math.random() * (99 - 40) + 40);
+
+  const form = document.getElementById('leadForm');
+  const shareUrl = window.location.href;
+  const shareText = "لحقت مكاني في القائمة الذهبية للمنصة الجديدة! باقي أماكن قليلة، سجل بسرعة من هنا: ";
+
+  form.addEventListener('submit', function() {
+    document.getElementById('mainBtn').innerText = "جاري التأكيد...";
+    document.getElementById('mainBtn').disabled = true;
+
+    // تجهيز روابط المشاركة
+    document.getElementById('waLink').href = `https://wa.me/?text=${encodeURIComponent(shareText + shareUrl)}`;
+    document.getElementById('twLink').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+    // إظهار رسالة النجاح بحركة خبيثة
+    setTimeout(() => {
+      document.getElementById('formSection').style.display = "none";
+      document.getElementById('successMsg').style.display = "block";
+    }, 1500);
+  });
+
+  function copyToClipboard() {
+    navigator.clipboard.writeText(shareUrl);
+    alert("تم النسخ! ابعته لصحابك دلوقتي 🤙");
+  }
 </script>
 
 </body>
 </html>
-
